@@ -84,7 +84,7 @@ def searchForParentsOfParents(parent, pool):
         if transaction.txid == parent:
             return transaction
         
-# Adding the top transactions and checking if the weight does not exceed 4000000
+# Adding the top transactions and checking if the weight does not exceed 4000000 - provided in the problem statement
 def validateEntries(block):
     res = []
     dict2 = dictionaryOfTx_idAndWeight(transactions)
