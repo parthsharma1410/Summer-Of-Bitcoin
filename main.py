@@ -41,35 +41,35 @@ def quickSort(array, index1, index2):
         quickSort(array, index1, partitioned-1)
         quickSort(array, partitioned+1, index2)
 
-# get dict of txids and their weight
+# Recieving all transaction IDs and their Fees as a dictionary
 def dictionaryOfTx_idAndFee(pool):
     dict1 = {}
     for transaction in pool:
         dict1[transaction.txid] = transaction.fee
     return dict1
 
-# get dict of txids and their weight
+# Recieving all transaction IDs and their weights as a dictionary
 def dictionaryOfTx_idAndWeight(pool):
     b = {}
     for transaction in pool:
         b[transaction.txid] = transaction.weight
     return b
 
-# Delete all null values
+# Deleting all null values
 def delNull(block):
     updated=[]
     for txid in block:
         if txid is not None: updated.append(txid)
     return updated
 
-# Get all the trnsactions with one or more parents
+# Get all the transactions with one or more parents
 def getEveryChildTransaction(transactions):
     childArray=[]
     for transaction in transactions:
         if len(transaction.parents[0])>0 : childArray.append(transaction.txid)
     return childArray
 
-# appends all parents and grandparents of a transaction using recursion 
+# Appending all parents and grandparents of a child transaction using recursion 
 def addAllParentTransactions(transaction, children, block):
     for parent in transaction.parents:
         if parent not in block:
